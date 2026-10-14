@@ -255,7 +255,7 @@ const ACHIEVEMENTS: { icon: React.ReactNode; amount?: string; title: string; sub
   { icon: <Coins className="h-5 w-5" />, amount: "5M NOK", title: "Commercialization grant", sub: "Research Council of Norway", date: "2024–2026" },
   { icon: <Award className="h-5 w-5" />, amount: "500K NOK", title: "Qualification grant", sub: "Research Council of Norway", date: "2022–2023" },
   { icon: <BookOpen className="h-5 w-5" />, title: "7 industry papers", sub: "ADIPEC, OMAE, SPE and Geoenergy Science & Engineering", date: "2022–2025" },
-  { icon: <Mic className="h-5 w-5" />, title: "Conference speaker", sub: "SPE Norway Subsurface Conference, Bergen", date: "2022" },
+  { icon: <Mic className="h-5 w-5" />, title: "Conference speaker", sub: "Presented 2 papers at OMAE, Singapore", date: "2024" },
 ];
 
 const SKILLS: { group: string; items: string[] }[] = [
