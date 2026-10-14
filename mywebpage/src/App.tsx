@@ -251,9 +251,9 @@ const PAPERS: Paper[] = [
   },
 ];
 
-const ACHIEVEMENTS = [
-  { icon: <Coins className="h-5 w-5" />, title: "5M NOK commercialization grant", sub: "Research Council of Norway", date: "2024–2026" },
-  { icon: <Award className="h-5 w-5" />, title: "500K NOK qualification grant", sub: "Research Council of Norway", date: "2022–2023" },
+const ACHIEVEMENTS: { icon: React.ReactNode; amount?: string; title: string; sub: string; date: string }[] = [
+  { icon: <Coins className="h-5 w-5" />, amount: "5M NOK", title: "Commercialization grant", sub: "Research Council of Norway", date: "2024–2026" },
+  { icon: <Award className="h-5 w-5" />, amount: "500K NOK", title: "Qualification grant", sub: "Research Council of Norway", date: "2022–2023" },
   { icon: <BookOpen className="h-5 w-5" />, title: "7 industry papers", sub: "ADIPEC, OMAE, SPE and Geoenergy Science & Engineering", date: "2022–2025" },
   { icon: <Mic className="h-5 w-5" />, title: "Conference speaker", sub: "SPE Norway Subsurface Conference, Bergen", date: "2022" },
 ];
@@ -793,7 +793,10 @@ function Achievements() {
             <motion.div key={a.title} {...reveal} transition={{ ...reveal.transition, delay: i * 0.08 }} className="flex flex-col gap-4 bg-ink-900 p-7">
               <span className="text-signal">{a.icon}</span>
               <div className="font-mono text-xs text-ink-400">{a.date}</div>
-              <div className="font-display text-xl font-extrabold leading-tight">{a.title}</div>
+              <div className="font-display text-xl font-extrabold leading-tight">
+                {a.amount && <span className="block text-signal">{a.amount}</span>}
+                {a.title}
+              </div>
               <div className="text-sm text-ink-300">{a.sub}</div>
             </motion.div>
           ))}
