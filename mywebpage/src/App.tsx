@@ -278,9 +278,9 @@ const SKILLS: { group: string; items: string[] }[] = [
 ];
 
 const CERTIFICATES: { name: string; hours?: string }[] = [
-  { name: "Spark Streaming: Stream Processing in Lakehouse (PySpark)" },
+  { name: "Spark Streaming: Stream Processing in Lakehouse (PySpark)", hours: "22.5h" },
   { name: "LangChain & LangGraph AI Engineer: Agents, Agentic RAG & MCP", hours: "18.5h" },
-  { name: "REST APIs with Flask and Python" },
+  { name: "REST APIs with Flask and Python", hours: "12.5h" },
   { name: "Docker & Kubernetes", hours: "22h" },
   { name: "Python for Data Science", hours: "21.5h" },
   { name: "Node.js & REST APIs", hours: "15h" },
