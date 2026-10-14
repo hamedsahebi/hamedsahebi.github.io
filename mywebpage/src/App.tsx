@@ -277,7 +277,10 @@ const SKILLS: { group: string; items: string[] }[] = [
   { group: "Infrastructure", items: ["Docker", "Kubernetes", "Linux", "GitHub Actions", "CI/CD"] },
 ];
 
-const CERTIFICATES = [
+const CERTIFICATES: { name: string; hours?: string }[] = [
+  { name: "Spark Streaming: Stream Processing in Lakehouse (PySpark)" },
+  { name: "LangChain & LangGraph AI Engineer: Agents, Agentic RAG & MCP" },
+  { name: "REST APIs with Flask and Python" },
   { name: "Docker & Kubernetes", hours: "22h" },
   { name: "LangChain & LangGraph", hours: "18.5h" },
   { name: "Python for Data Science", hours: "21.5h" },
@@ -849,7 +852,7 @@ function Skills() {
             {CERTIFICATES.map((c) => (
               <li key={c.name} className="flex justify-between gap-4 py-3 text-sm transition-colors hover:text-signal">
                 <span>{c.name}</span>
-                <span className="font-mono text-xs tabular-nums text-ink-400">{c.hours}</span>
+                {c.hours && <span className="shrink-0 font-mono text-xs tabular-nums text-ink-400">{c.hours}</span>}
               </li>
             ))}
           </ul>
