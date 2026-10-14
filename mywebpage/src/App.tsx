@@ -905,6 +905,7 @@ function WorkWithMe() {
             <CopyEmail />
             <a href={PROFILE.phoneHref} className="btn btn-outline"><Phone className="h-4 w-4" />{PROFILE.phone}</a>
             <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="btn btn-outline"><Linkedin className="h-4 w-4" />LinkedIn</a>
+            <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" className="btn btn-outline"><Github className="h-4 w-4" />GitHub</a>
           </div>
           <p className="text-sm text-ink-400">References available on request.</p>
         </motion.div>
@@ -918,9 +919,12 @@ function Footer() {
     <footer className="border-t border-ink-700 py-8 text-sm text-ink-400">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 md:flex-row md:px-6">
         <span>© {new Date().getFullYear()} {PROFILE.name}</span>
-        <a href={PROFILE.cv} className="inline-flex items-center gap-1.5 hover:text-ink-100">
-          <Download className="h-4 w-4" />Download CV
-        </a>
+        <div className="flex flex-wrap items-center gap-5">
+          <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink-100"><Github className="h-4 w-4" />GitHub</a>
+          <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink-100"><Linkedin className="h-4 w-4" />LinkedIn</a>
+          <a href={PROFILE.socials.scholar} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink-100"><BookOpen className="h-4 w-4" />Scholar</a>
+          <a href={PROFILE.cv} className="inline-flex items-center gap-1.5 hover:text-ink-100"><Download className="h-4 w-4" />Download CV</a>
+        </div>
       </div>
     </footer>
   );
