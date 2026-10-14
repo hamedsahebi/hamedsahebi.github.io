@@ -5,7 +5,7 @@ import {
   Github, Linkedin, Mail, Phone, MapPin, Download, ArrowRight, ArrowDown, Copy, Check,
   Award, Mic, BookOpen, Coins, Database, Workflow, Cpu, Network,
   Building2, Handshake, GraduationCap, BadgeCheck,
-  FlaskConical, Presentation, Package, RefreshCw, ShieldCheck, ArrowUpRight,
+  FlaskConical, Presentation, Package, RefreshCw, ShieldCheck, ArrowUpRight, Layers, Activity,
 } from "lucide-react";
 
 // -------- Profile / Content --------
@@ -34,7 +34,7 @@ const STATS = [
 ];
 
 const TECH = [
-  "Python", "FastAPI", "PostgreSQL", "InfluxDB", "MongoDB", "Docker", "Kubernetes", "LangChain",
+  "Python", "Apache Spark", "Databricks", "Stream processing", "FastAPI", "PostgreSQL", "InfluxDB", "MongoDB", "Docker", "Kubernetes", "LangChain",
   "LangGraph", "LLM agents", "Vector DB", "REST APIs", "TypeScript", "Node.js", "React", "pandas",
   "NumPy", "GitHub Actions", "Linux", "CI/CD",
 ];
@@ -44,6 +44,16 @@ const CAPABILITIES = [
     icon: <Database className="h-6 w-6" />,
     title: "Data architecture",
     text: "Data models and storage strategy for high-frequency, production-critical data in PostgreSQL, InfluxDB and MongoDB.",
+  },
+  {
+    icon: <Layers className="h-6 w-6" />,
+    title: "Data engineering",
+    text: "Batch pipelines that clean, transform and analyse large volumes of historical data with Apache Spark and Databricks.",
+  },
+  {
+    icon: <Activity className="h-6 w-6" />,
+    title: "Stream processing",
+    text: "Real-time pipelines that ingest and process live data streams, such as high-frequency sensor telemetry, as events happen.",
   },
   {
     icon: <Network className="h-6 w-6" />,
@@ -260,9 +270,9 @@ const ACHIEVEMENTS: { icon: React.ReactNode; amount?: string; title: string; sub
 
 const SKILLS: { group: string; items: string[] }[] = [
   { group: "Architecture", items: ["System design", "Data architecture", "REST API design", "System integration"] },
-  { group: "Languages", items: ["Python", "JavaScript", "TypeScript"] },
-  { group: "Backend", items: ["FastAPI", "Flask", "Node.js", "Express"] },
-  { group: "Data", items: ["PostgreSQL", "InfluxDB", "MongoDB", "Vector DB", "pandas", "NumPy"] },
+  { group: "Languages & backend", items: ["Python", "JavaScript", "TypeScript", "FastAPI", "Flask", "Node.js", "Express"] },
+  { group: "Data engineering", items: ["Apache Spark", "Databricks", "ETL / ELT", "Batch processing", "Stream processing", "pandas", "NumPy"] },
+  { group: "Databases", items: ["PostgreSQL", "InfluxDB", "MongoDB", "Vector DB"] },
   { group: "AI", items: ["LLMs", "LangChain", "LangGraph", "Agents", "scikit-learn", "Keras"] },
   { group: "Infrastructure", items: ["Docker", "Kubernetes", "Linux", "GitHub Actions", "CI/CD"] },
 ];
@@ -504,7 +514,7 @@ function Capabilities() {
         title={<>Architecture for data that <span className="text-signal">has to be right</span></>}
         intro="Wherever operations depend on data arriving on time and being trusted, the problems look the same. These are the parts I own."
       />
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CAPABILITIES.map((c, i) => (
           <motion.div key={c.title} {...reveal} transition={{ ...reveal.transition, delay: i * 0.08 }}>
             <SpotCard className="h-full p-8">
