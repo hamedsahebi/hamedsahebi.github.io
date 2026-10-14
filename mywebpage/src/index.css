@@ -5,14 +5,73 @@
 html { scroll-behavior: smooth; color-scheme: dark; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-/* tiny button/chip styles */
-.btn {
-  @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+@layer base {
+  h1, h2, h3 { @apply font-display; }
+  p, li { @apply leading-relaxed; }
+  ::selection { @apply bg-signal text-ink-950; }
 }
-.btn-primary { @apply bg-signal text-ink-950 border-signal hover:bg-signal/90; }
-.btn-outline { @apply bg-transparent text-ink-100 border-ink-600 hover:border-ink-300; }
 
-.chip { @apply inline-flex items-center px-2 py-0.5 font-mono text-xs border border-ink-700 text-ink-300; }
+/* buttons, chips, labels */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold border transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+}
+.btn-primary { @apply bg-signal text-ink-950 border-signal hover:shadow-[0_0_32px_-4px_rgba(240,168,58,0.6)]; }
+.btn-outline { @apply bg-ink-950/40 text-ink-100 border-ink-600 hover:border-ink-100; }
+
+.chip { @apply inline-flex items-center px-2.5 py-1 font-mono text-xs border border-ink-700 text-ink-300; }
 .chip-signal { @apply border-signal/60 text-signal; }
+.chip-hover { @apply transition-colors hover:border-wire hover:text-wire; }
 
-.eyebrow { @apply font-mono text-xs uppercase tracking-wider text-signal; }
+.eyebrow { @apply flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-signal; }
+.eyebrow::before { content: ""; @apply h-px w-10 bg-signal; }
+
+.nav-link { @apply relative transition-colors hover:text-ink-100; }
+.nav-link::after { content: ""; @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-signal transition-transform duration-300; }
+.nav-link:hover::after { @apply scale-x-100; }
+
+/* backgrounds */
+.hero-bg {
+  background:
+    radial-gradient(50% 60% at 78% 48%, rgba(95, 184, 204, 0.12), transparent 70%),
+    radial-gradient(30% 40% at 72% 50%, rgba(240, 168, 58, 0.08), transparent 70%),
+    linear-gradient(rgba(34, 48, 61, 0.35) 1px, transparent 1px) 0 0 / 100% 56px,
+    linear-gradient(90deg, rgba(34, 48, 61, 0.35) 1px, transparent 1px) 0 0 / 56px 100%,
+    #0c141d;
+}
+.contact-bg {
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(240, 168, 58, 0.10), transparent 70%),
+    radial-gradient(50% 50% at 10% 90%, rgba(95, 184, 204, 0.08), transparent 70%);
+}
+
+/* card that lights up around the cursor */
+.spot {
+  --mx: -500px; --my: -500px;
+  @apply relative border border-ink-700 bg-ink-900;
+  background-image: radial-gradient(420px circle at var(--mx) var(--my), rgba(95, 184, 204, 0.10), transparent 60%);
+}
+.spot::before {
+  content: "";
+  @apply pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300;
+  background: radial-gradient(300px circle at var(--mx) var(--my), rgba(240, 168, 58, 0.55), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+.spot:hover::before { @apply opacity-100; }
+
+/* tech marquee */
+.marquee { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { animation: marquee 45s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* project visuals */
+.draw-line { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 2.4s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.grow-bar { transform-box: fill-box; transform-origin: bottom; animation: grow 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes grow { from { transform: scaleY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .draw-line, .grow-bar { animation: none; stroke-dashoffset: 0; }
+}
