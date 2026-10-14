@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* tiny card/button/badge styles */
+html { scroll-behavior: smooth; color-scheme: dark; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* tiny button/chip styles */
 .btn {
-  @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl text-sm font-medium border shadow-sm transition hover:opacity-90;
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
 }
-.btn-primary { @apply bg-black text-white; }
-.btn-outline { @apply bg-white text-slate-800 border-slate-300; }
+.btn-primary { @apply bg-signal text-ink-950 border-signal hover:bg-signal/90; }
+.btn-outline { @apply bg-transparent text-ink-100 border-ink-600 hover:border-ink-300; }
 
-.card { @apply bg-white rounded-3xl border shadow-sm; }
-.card-header { @apply px-6 pt-6; }
-.card-title { @apply text-lg font-semibold; }
-.card-content { @apply px-6 pb-6 space-y-3; }
+.chip { @apply inline-flex items-center px-2 py-0.5 font-mono text-xs border border-ink-700 text-ink-300; }
+.chip-signal { @apply border-signal/60 text-signal; }
 
-.badge { @apply inline-flex items-center px-2.5 py-1 rounded-xl text-xs font-medium border; }
-.badge-outline { @apply border-slate-300 text-slate-700; }
+.eyebrow { @apply font-mono text-xs uppercase tracking-wider text-signal; }
